@@ -1,0 +1,6 @@
+Creating new core 'jcg' using command:
+http://localhost:8983/solr/admin/cores?action=CREATE&name=jcg&instanceDir=jcg
+
+java -Dtype=text/csv -Durl=http://localhost:8983/solr/jcg/update -jar post.jar  books.csv
+
+

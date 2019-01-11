@@ -1,0 +1,94 @@
+##======================= START:steps for fid:gfctwnsg and host:bdgttnproxy1h2d =======================##
+
+steps:
+step 1:
+    login EAP proxy primary host
+    promote to fid gfctwnsg
+    change current shell to bash
+	
+step 2:
+    copy file install_sprinter_1.5.28_20171010.sh from /home/pd94468 location to home directory for fid
+	cd ~
+	cp /home/pd94468/install_sprinter_1.5.28_20171010.sh ~
+	
+step 3:Optionaly add -f param to install sprinter with force option which will overwrite existing version and re-install
+    chmod a+x install_sprinter_1.5.28_20171010.sh
+    ./install_sprinter_1.5.28_20171010.sh -m /data/1
+	--OR--
+	Execute installation script  to a custom location <optional>
+    ./install_sprinter_1.5.28_20171010.sh -m /data/1 –d <custom_location_here>
+
+	
+step 4:
+    cd ~/sprinter_home/etc
+		copy file project_citiscreenning_dev_gfctwnsg.env from /home/pd94468 location to ~/sprinter_home/etc
+	cp 	/home/pd94468/project_citiscreenning_dev_gfctwnsg.env .
+    chmod 755 project_citiscreenning_dev_gfctwnsg.env
+
+step 5:
+	Update project_citiscreenning_dev_gfctwnsg.env file for project specific configuration. Updated Dev file is attached.
+
+step 6:
+    #set Cret, keep all the Crets(TX/TW/SRM/ANALYZER) handy before running below commands
+    source ~/sprinter_home/etc/project_citiscreenning_dev_gfctwnsg.env
+    source ~/sprinter_home/live/server/comm.sh
+    
+    echo  $SPRINTER_DATASOURCE_JDBC_URL $SPRINTER_DATASOURCE_JDBC_USER
+    ~/sprinter_home/live/server/set_fid_pwd.sh $SPRINTER_DATASOURCE_JDBC_URL $SPRINTER_DATASOURCE_JDBC_USER
+    ~/sprinter_home/live/server/get_fid_pwd.sh $SPRINTER_DATASOURCE_JDBC_URL $SPRINTER_DATASOURCE_JDBC_USER
+	
+	This will set Cret for TX as TX is the default database set. 
+	For addition of any new database(TW/SRM/ANALYZER) other than TX, Cret needs to set separately by executing below command per db:
+	
+	TW Cret set:
+	~/sprinter_home/live/server/set_fid_pwd.sh $TW_SPRINTER_DATASOURCE_JDBC_URL $TW_SPRINTER_DATASOURCE_JDBC_USER
+	~/sprinter_home/live/server/get_fid_pwd.sh $TW_SPRINTER_DATASOURCE_JDBC_URL $TW_SPRINTER_DATASOURCE_JDBC_USER
+	
+	ANALYZER Cret set:
+	~/sprinter_home/live/server/set_fid_pwd.sh $ANLZR_SPRINTER_DATASOURCE_JDBC_URL $ANLZR_SPRINTER_DATASOURCE_JDBC_USER
+	~/sprinter_home/live/server/get_fid_pwd.sh $ANLZR_SPRINTER_DATASOURCE_JDBC_URL $ANLZR_SPRINTER_DATASOURCE_JDBC_USER
+	
+	SRM->Cret set, Cret is:Cret
+	~/sprinter_home/live/server/set_fid_pwd.sh $SRM_SPRINTER_DATASOURCE_JDBC_URL $SRM_SPRINTER_DATASOURCE_JDBC_USER
+	~/sprinter_home/live/server/get_fid_pwd.sh $SRM_SPRINTER_DATASOURCE_JDBC_URL $SRM_SPRINTER_DATASOURCE_JDBC_USER
+	
+	#set Cret for AWP DB
+	Change the 'dev' AWP DB tns details in below file:(
+	dev)
+        export SPRINTER_AWP_DB_JDBC_URL='jdbc:oracle:thin:@oraasgtd26-scan.nam.nsroot.net:8888:EP2CSDV'
+        
+)
+	file location: ~/sprinter_home/live/server/etc/sprinter_awpdb.env
+	
+	source ~/sprinter_home/live/server/etc/sprinter_awpdb.env
+    echo $SPRINTER_AWP_DB_JDBC_URL $SPRINTER_AWP_DB_JDBC_USER
+    ~/sprinter_home/live/server/set_fid_pwd.sh $SPRINTER_AWP_DB_JDBC_URL $SPRINTER_AWP_DB_JDBC_USER
+    ~/sprinter_home/live/server/get_fid_pwd.sh $SPRINTER_AWP_DB_JDBC_URL $SPRINTER_AWP_DB_JDBC_USER
+
+step 7:
+	Replace the jar to install version 1.5.33
+	cp /home/pd94468/spark-sprinter-1.x.jar ~/sprinter_home/live/spark/lib
+	chmod 0644 ~/sprinter_home/live/spark/lib/spark-sprinter-1.x.jar
+
+step 8:
+    #bring sprinter server up
+    ~/sprinter_home/live/server/start_sprinter_server.sh
+    
+step 9:
+    #create log file in hdfs
+    hdfs dfs -mkdir -p /data/gfctwnsg/file_id
+
+step 10:
+	create following trigger landing unix path on for Citi screening proejct and mount the same using NFS.
+	
+	mkdir -p /var/app/gftseap2/GAR_DEV_1/gfctwn/triggers/RHDQP
+	
+	{details for NDM mounting:
+	App ID:CitiScreening
+	Permission: 775
+    Ownership: gfctwnsg:wasgrp
+	Command type code:SPRINTER_ORA2HIVE
+	location:/var/app/gftseap2/GAR_DEV_1/gfctwn/triggers/RHDQP
+	}
+	
+##======================= END:steps for fid:gfctwnsg and host:bdgttnproxy1h2d =======================##

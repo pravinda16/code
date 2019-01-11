@@ -1,0 +1,59 @@
+[gffshnsg@bdgtr013x04h2 ~]$  kinit -k -t /opt/Cloudera/keytabs/`whoami`.`hostname -s`.keytab `whoami`/`hostname -f`@NAMUXDEV.DYN.NSROOT.NET;ssl=true;
+[gffshnsg@bdgtr013x04h2 ~]$  hadoop fs -ls -R hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment
+drwxrwx--x+  - hive hive          0 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-21
+-rwxrwx--x+  3 hive hive       2605 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-21/part-r-00004-46b378ab-b835-4111-a6c7-f280d93b8c6a.gz.parquet
+drwxrwx--x+  - hive hive          0 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-22
+-rwxrwx--x+  3 hive hive       2397 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-22/part-r-00005-46b378ab-b835-4111-a6c7-f280d93b8c6a.gz.parquet
+drwxrwx--x+  - hive hive          0 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-23
+-rwxrwx--x+  3 hive hive       2105 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-23/part-r-00006-46b378ab-b835-4111-a6c7-f280d93b8c6a.gz.parquet
+
+
+[gffshnsg@bdgtr013x04h2 ~]$  hadoop fs -ls -R hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment
+drwxrwx--x+  - hive hive          0 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-21
+-rwxrwx--x+  3 hive hive       2605 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-21/part-r-00004-46b378ab-b835-4111-a6c7-f280d93b8c6a.gz.parquet
+drwxrwx--x+  - hive hive          0 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-22
+-rwxrwx--x+  3 hive hive       2397 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-22/part-r-00005-46b378ab-b835-4111-a6c7-f280d93b8c6a.gz.parquet
+drwxrwx--x+  - hive hive          0 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-23
+-rwxrwx--x+  3 hive hive       2105 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-23/part-r-00006-46b378ab-b835-4111-a6c7-f280d93b8c6a.gz.parquet
+
+
+added new column col1:
+[gffshnsg@bdgtr013x04h2 ~]$  hadoop fs -ls -R hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment                                                            
+drwxrwx--x+  - hive hive          0 2018-07-13 05:00 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-21
+-rwxrwx--x+  3 hive hive       1438 2018-07-13 05:00 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-21/000000_0
+-rwxrwx--x+  3 hive hive       2605 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-21/part-r-00004-46b378ab-b835-4111-a6c7-f280d93b8c6a.gz.parquet
+drwxrwx--x+  - hive hive          0 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-22
+-rwxrwx--x+  3 hive hive       2397 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-22/part-r-00005-46b378ab-b835-4111-a6c7-f280d93b8c6a.gz.parquet
+drwxrwx--x+  - hive hive          0 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-23
+-rwxrwx--x+  3 hive hive       2105 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-23/part-r-00006-46b378ab-b835-4111-a6c7-f280d93b8c6a.gz.parquet
+
+
+--column rename to col2( string->int)=>all col2 values are null
+alter table qa_assingment change col1 col2 string;
+
+[gffshnsg@bdgtr013x04h2 ~]$  hadoop fs -ls -R hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment
+drwxrwx--x+  - hive hive          0 2018-07-13 05:00 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-21
+-rwxrwx--x+  3 hive hive       1438 2018-07-13 05:00 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-21/000000_0
+-rwxrwx--x+  3 hive hive       2605 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-21/part-r-00004-46b378ab-b835-4111-a6c7-f280d93b8c6a.gz.parquet
+drwxrwx--x+  - hive hive          0 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-22
+-rwxrwx--x+  3 hive hive       2397 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-22/part-r-00005-46b378ab-b835-4111-a6c7-f280d93b8c6a.gz.parquet
+drwxrwx--x+  - hive hive          0 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-23
+-rwxrwx--x+  3 hive hive       2105 2018-06-26 08:10 hdfs://gftsdev/data/gffshnsg/staging/hive/gffshnsg_staging/qa_assingment/partition_date=2018-02-23/part-r-00006-46b378ab-b835-4111-a6c7-f280d93b8c6a.gz.parquet
+Observation:You can not query the data
+If datatype is change-> you can not query
+If column name only change then you can query the data but all previous records for that column is null
+
+
+For droping a column is a hive table->use 
+MSCK REPAIR TABLE qa_assingment;
+Syntax: alter table qa_assingment replace columns (colname datatype,....) cascade
+
+alter table  `qa_assingment`  replace columns (             
+  `qa_assingment_internal_id` decimal(38,10),      
+  `alert_id` decimal(38,10),                       
+  `qa_status` string,                              
+  `user_role` string,                              
+  `event` string,                                  
+  `assigned_by` string,                            
+  `assigned_to` string,                            
+  `created_date` string) CASCADE;--removed 1 columns here

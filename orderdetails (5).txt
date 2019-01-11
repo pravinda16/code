@@ -1,0 +1,152 @@
+Dev:
+Host:bdgttnproxy1h2d
+fid:gfctwnsg  shortname:gfctwn
+trigger path:/var/app/gftseap2/GAR_DEV_1/gfctwn/triggers/RHDQP
+log path:/home/gfctwnsg/sprinter_home/log
+--------------------------------------------------------------------
+UAT host details:
+Host:bdgttnproxy1h2u 
+fid:gfctwnsg
+/var/app/gftseap2/UAT_6/gfctwn/triggers/RHDQP
+
+--------------------------------------------------------------------
+
+AWP db:
+SPRINTER_AWP_DB_JDBC_URL='jdbc:oracle:thin:@oraasgtd26-scan.nam.nsroot.net:8888:EP2CSDV'
+User:OPSPORTAL_RO
+pwd:citi2016
+
+fid list:
+--DEV
+FID	Primary Group	Secondary Group	Project Name	Cluster Region/Name	Sector	Project Region	SDLC	Zone	Owner soeid	Owner Name	Project short name
+gfctwnee	gfctwnee	gfctwnsg,gfctwnsgstg	Citi Screening - Transaction & Workflow Data Warehouse	NAM-O&T-Shared (FAJITA)-DEV	GFTS	NAM	DEV	End to End 	pg76051	Galipalli, Pavan 	gfctwn
+gfctwnsg	gfctwnsg	gfctwnsgstg	Citi Screening - Transaction & Workflow Data Warehouse	NAM-O&T-Shared (FAJITA)-DEV	GFTS	NAM	DEV	staging 	pg76051	Galipalli, Pavan 	gfctwn
+gfctwnsd	gfctwnsd	 	Citi Screening - Transaction & Workflow Data Warehouse	NAM-O&T-Shared (FAJITA)-DEV	GFTS	NAM	DEV	standardization	pg76051	Galipalli, Pavan 	gfctwn
+gfctwnrp	gfctwnrp	 	Citi Screening - Transaction & Workflow Data Warehouse	NAM-O&T-Shared (FAJITA)-DEV	GFTS	NAM	DEV	reporting  	pg76051	Galipalli, Pavan 	gfctwn
+gfctwnsgstg	gfctwnsgstg	 	Citi Screening - Transaction & Workflow Data Warehouse	NAM-O&T-Shared (FAJITA)-DEV	GFTS	NAM	DEV	sFTP account	pg76051	Galipalli, Pavan 	gfctwn
+ 	 	 	 	 	 	 	 	 	 	 	 
+--UAT
+FID	Primary Group	Secondary Group	Project Name	Cluster Region/Name	Sector	Project Region	SDLC	Zone	Owner soeid	Owner Name	Project short name
+gfctwnee	gfctwnee	gfctwnsg,gfctwnsgstg	Citi Screening - Transaction & Workflow Data Warehouse	NAM-O&T-Shared (BURRITO)-UAT	GFTS	NAM	UAT	End to End 	pg76051	Galipalli, Pavan 	gfctwn
+gfctwnsg	gfctwnsg	gfctwnsgstg	Citi Screening - Transaction & Workflow Data Warehouse	NAM-O&T-Shared (BURRITO)-UAT	GFTS	NAM	UAT	staging 	pg76051	Galipalli, Pavan 	gfctwn
+gfctwnsd	gfctwnsd	 	Citi Screening - Transaction & Workflow Data Warehouse	NAM-O&T-Shared (BURRITO)-UAT	GFTS	NAM	UAT	standardization	pg76051	Galipalli, Pavan 	gfctwn
+gfctwnrp	gfctwnrp	 	Citi Screening - Transaction & Workflow Data Warehouse	NAM-O&T-Shared (BURRITO)-UAT	GFTS	NAM	UAT	reporting  	pg76051	Galipalli, Pavan 	gfctwn
+gfctwnsgstg	gfctwnsgstg	 	Citi Screening - Transaction & Workflow Data Warehouse	NAM-O&T-Shared (BURRITO)-UAT	GFTS	NAM	UAT	sFTP account	pg76051	Galipalli, Pavan 	gfctwn
+ 	 	 	 	 	 	 	 	 	 	 	 
+beeline:
+kinit -k -t /opt/Cloudera/keytabs/`whoami`.`hostname -s`.keytab `whoami`/`hostname -f`@NAMUXDEV.DYN.NSROOT.NET
+beeline -u "jdbc:hive2://bigdataplatform-dev.nam.nsroot.net:10000/default;principal=hive/bigdataplatform-dev.nam.nsroot.net@NAMUXDEV.DYN.NSROOT.NET;ssl=true"
+
+::::DB details::::
+Tw 5.0
+===========================================
+SIT	::=>
+CNTXDB1D =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = vm-b31a-c0f9.nam.nsroot.net)(PORT = 1522))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = CNTXDB1D)
+    ) )	
+User:CSTWEAP
+===========================================	
+DEV	TW Host : sd-005f-c62f.nam.nsroot.net
+Port :1522
+Service : mstdb.nam.nsroot.net	
+User:CSTWEAP
+===========================================
+Tx::=>
+
+ENV	TNS	User
+SIT	
+CSTXDBS1 =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = vm-5bac-2b63.nam.nsroot.net)(PORT = 1522))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = CSTXDBS1)
+    )
+  )	
+User:CSTXEAP  
+===========================================  
+TX DEV	
+CSTXDBD =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = vm-50d8-a1cf.nam.nsroot.net)(PORT = 1522))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = CSTXDBD)
+    )
+  )	
+User:CSTXEAP
+credentials:credentials
+=========================================== 
+Analyser dev:
+Host : sd-7964-7e30.nam.nsroot.net 
+Port : 1522 
+Service Name : mstdb.nam.nsroot.net 
+credentials : EAP_FID/EAP123
+============================================
+SRM DEV :CLOUDAPP
+HOST = sd-ab70-bc7e.nam.nsroot.net
+PORT = 1522
+SID = CLOUDAPP
+SRM_EAP_ID/credentials
+===============================================
+fresh db
+HOST = oraasmwd17-scan.nam.nsroot.net
+PORT = 8889
+Service Name = GENIFRD
+FRESH/C1T12016
+==========================
+
+SSAT_DEV
+(DESCRIPTION= (ADDRESS= (PROTOCOL=tcp) (HOST=sd-ab70-bc7e.
+nam.nsroot.net) (PORT=1522)) (CONNECT_DATA= (SERVICE_NAME=mstdb.nam.nsroot.net)))
+
+SDR_DEV
+(DESCRIPTION= (ADDRESS= (PROTOCOL=tcp) (HOST=sd-ab70-bc7e.
+nam.nsroot.net) (PORT=1522)) (CONNECT_DATA= (SERVICE_NAME=mstdb.nam.nsroot.net)))
+
+ssat/ssat and sdr/sdr
+============================================
+Sprinter datapull will access dba_tables/dba_segments/dba_partitions./…  to get table meta data, please grant permission to fix this issue.
+grant select any dictionary to <fid_here>;
+Select any dictionary role will not be granted by GIDA and DBA Team to any FID due to security reason.
+Is it ok if we ask for select catalog role ?
+********Use this: grant select_catalog_role to <FID>
+Thanks for professional suggestions, I did a quick testing,  “grant select_catalog_role “ worked as expected.
+
+SQL> create user abc identified by abc account unlock;
+
+User created.
+
+SQL> grant create session to abc;
+
+Grant succeeded.
+
+SQL> connect abc/abc;
+Connected.
+
+SQL> select count(1) from dba_tables;
+select count(1) from dba_tables
+                     *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect / as sysdba
+Connected.
+SQL> grant select_catalog_role to abc;
+
+Grant succeeded.
+
+SQL> connect abc/abc;
+Connected.
+SQL> select count(1) from dba_tables;
+
+  COUNT(1)
+----------
+      2013
+
+============================================
