@@ -83,6 +83,8 @@ Copy code
 kafka-acls --authorizer-properties zookeeper.connect=<ZOOKEEPER_CONNECT> --add --allow-principal <PRINCIPAL> --operation <OPERATION> --topic <TOPIC>
 Replace placeholders with your actual values.
 
+kafka-acls --authorizer-properties zookeeper.connect=<ZOOKEEPER_CONNECT> --add --allow-principal Group:<CONSUMER_GROUP> --operation Read --topic <TOPIC>
+
 Restart Services: After making changes, restart your Kafka broker and Kafka client applications to apply the updated configurations.
 
 Consult Documentation: Refer to the Kafka and Kerberos documentation for your specific Kafka version. Sometimes, there might be version-specific considerations or updates.
