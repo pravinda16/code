@@ -93,8 +93,5 @@ By systematically checking these aspects, you should be able to identify and res
 
 
 
-
-Message ChatGPT…
-
-ChatGPT can make mistakes. Consider checking important information.
-ChatGPT
+===
+org.apache.kafka.common.errors.GroupAuthorizationException: Not authorized to access group: group-id now, because group-id has default value now
